@@ -5,5 +5,6 @@ const mongoose = require('mongoose');
 
 module.exports = function () {
     mongoose.connect(config.server.connectionString);
+    mongoose.Promise = require('q').Promise; 
     // mongoose.set('debug', true);
 };

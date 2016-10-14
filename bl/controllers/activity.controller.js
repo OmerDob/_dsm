@@ -1,6 +1,6 @@
 'use strict';
 
-const activityModel = require('../db/mdoels/activity.model');
+const activityModel = require('../db/models/activity.model');
 
 module.exports.getAll = function (req, res) {
     activityModel.find({isDeleted: false}).exec()

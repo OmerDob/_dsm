@@ -1,0 +1,28 @@
+{
+  "name": "dsm",
+  "version": "1.0.0",
+  "description": "Dance school management system",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "moment": "^2.15.1",
+    "mongoose": "^4.6.3",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.2"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmerDob/dsm.git"
+  },
+  "author": "Omer Dobzinsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OmerDob/dsm/issues"
+  },
+  "homepage": "https://github.com/OmerDob/dsm#readme"
+}
