@@ -51,6 +51,84 @@ describe('conroller-wrapper', function () {
         expect(actionMock).toHaveBeenCalledWith(expected);
     });
 
+    it('should return an error when action is undefined', function (done) {
+        var expectedError = 'action should be a function.';
+        var expectedStatus = 500;
+        var expectedResult = {err: true};
+
+        _controllerWrapper(undefined)(_reqMock, _resMock).catch(function (e) {
+            expect(e).toEqual(expectedError);
+            expect(_resMock.status).toHaveBeenCalledWith(expectedStatus);
+            expect(_resMock.json).toHaveBeenCalledWith(expectedResult);
+            done();
+        });
+    });
+
+    it('should return an error when action is not an integer', function (done) {
+        var expectedError = 'action should be a function.';
+        var expectedStatus = 500;
+        var expectedResult = {err: true};
+
+        _controllerWrapper(5)(_reqMock, _resMock).catch(function (e) {
+            expect(e).toEqual(expectedError);
+            expect(_resMock.status).toHaveBeenCalledWith(expectedStatus);
+            expect(_resMock.json).toHaveBeenCalledWith(expectedResult);
+            done();
+        });
+    });
+
+    it('should return an error when action is not a string', function (done) {
+        var expectedError = 'action should be a function.';
+        var expectedStatus = 500;
+        var expectedResult = {err: true};
+
+        _controllerWrapper('hello')(_reqMock, _resMock).catch(function (e) {
+            expect(e).toEqual(expectedError);
+            expect(_resMock.status).toHaveBeenCalledWith(expectedStatus);
+            expect(_resMock.json).toHaveBeenCalledWith(expectedResult);
+            done();
+        });
+    });
+
+    it('should return an error when action is not a boolean', function (done) {
+        var expectedError = 'action should be a function.';
+        var expectedStatus = 500;
+        var expectedResult = {err: true};
+
+        _controllerWrapper(true)(_reqMock, _resMock).catch(function (e) {
+            expect(e).toEqual(expectedError);
+            expect(_resMock.status).toHaveBeenCalledWith(expectedStatus);
+            expect(_resMock.json).toHaveBeenCalledWith(expectedResult);
+            done();
+        });
+    });
+
+    it('should return an error when action is not an array', function (done) {
+        var expectedError = 'action should be a function.';
+        var expectedStatus = 500;
+        var expectedResult = {err: true};
+
+        _controllerWrapper([])(_reqMock, _resMock).catch(function (e) {
+            expect(e).toEqual(expectedError);
+            expect(_resMock.status).toHaveBeenCalledWith(expectedStatus);
+            expect(_resMock.json).toHaveBeenCalledWith(expectedResult);
+            done();
+        });
+    });
+
+    it('should return an error when action is not an object', function (done) {
+        var expectedError = 'action should be a function.';
+        var expectedStatus = 500;
+        var expectedResult = {err: true};
+
+        _controllerWrapper({})(_reqMock, _resMock).catch(function (e) {
+            expect(e).toEqual(expectedError);
+            expect(_resMock.status).toHaveBeenCalledWith(expectedStatus);
+            expect(_resMock.json).toHaveBeenCalledWith(expectedResult);
+            done();
+        });
+    });
+
     it('should send the result when performed sync', function (done) {
         var expected = 'hello wrapper';
         var actionMock = function () {
