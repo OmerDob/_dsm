@@ -2,14 +2,15 @@
 
 const express = require('express');
 const activityCtrl = require('../bl/controllers/activity.controller');
+const callToCtrlFunc = require('./controller-wrapper');
 
 var activityRouter = express.Router();
 
 activityRouter
-    .get('/', activityCtrl.getAll)
-    .get('/:id', activityCtrl.get)
-    .post('/', activityCtrl.create)
-    .put('/', activityCtrl.update)
-    .delete('/:id', activityCtrl.delete);
+    .get('/', callToCtrlFunc(activityCtrl.getAll))
+    .get('/:id', callToCtrlFunc(activityCtrl.get))
+    .post('/', callToCtrlFunc(activityCtrl.create))
+    .put('/', callToCtrlFunc(activityCtrl.update))
+    .delete('/:id', callToCtrlFunc(activityCtrl.delete));
 
 module.exports = activityRouter;
