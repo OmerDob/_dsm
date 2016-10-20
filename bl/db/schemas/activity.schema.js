@@ -26,4 +26,4 @@ activitySchema.virtual('duration').get(function () {
 
 });
 
-module.exports = mongoose.model('Activity', activitySchema);
+module.exports = activitySchema;
