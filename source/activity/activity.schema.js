@@ -2,9 +2,7 @@
 
 const mongoose = require('mongoose');
 
-var schema = mongoose.Schema;
-
-var activitySchema = new schema({
+var activitySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -19,11 +17,19 @@ var activitySchema = new schema({
     },
     location: String,
     description: String,
-    isDeleted: Boolean
+    isDeleted: {
+        type: Boolean,
+        select: false,
+        default: false
+    }
 });
 
-activitySchema.virtual('duration').get(function () {
+activitySchema.query.notDeleted = function () {
+    return this.where({isDeleted: false});
+};
 
-});
+// activitySchema.virtual('duration').get(function () {
+
+// });
 
 module.exports = activitySchema;
