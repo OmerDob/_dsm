@@ -32,8 +32,18 @@ dsmApp.use(session({
 dsmApp.use(bodyParser.json());
 dsmApp.use(bodyParser.urlencoded({ extended: true }));
 
+// Allow CORS
+dsmApp.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
+
+// Register routers
 dsmApp.use('/activity', activity.router);
 
+// Start the server
 dsmApp.listen(conf.port, conf.hostName, function () {
     logger.log(0, `Server started at http://${conf.hostName}:${conf.port}`);
 });

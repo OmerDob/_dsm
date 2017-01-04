@@ -25,11 +25,7 @@ var activitySchema = new mongoose.Schema({
 });
 
 activitySchema.query.notDeleted = function () {
-    return this.where({isDeleted: false});
+    return this.or([{isDeleted: false}, {isDeleted: undefined}]);
 };
-
-// activitySchema.virtual('duration').get(function () {
-
-// });
 
 module.exports = activitySchema;

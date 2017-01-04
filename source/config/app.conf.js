@@ -1,5 +1,5 @@
 module.exports = {
     hostName: 'localhost',
-    port: 3000,
+    port: 3030,
     connectionString: 'mongodb://localhost/dsm'
 };
